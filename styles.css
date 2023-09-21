@@ -1,0 +1,117 @@
+a {
+  color: #c04bff;
+}
+
+a:hover {
+  color: #e4b3ff;
+}
+
+
+h1, h2, h3 {
+  text-align: center;
+}
+
+
+.outer_div {
+  background-color: #353535;
+  border-radius: 14px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  margin: 7px;
+}
+
+
+.outer_div h2, .outer_div h3 {
+  margin-top: 7px;
+  margin-bottom: 14px;
+}
+
+
+.inner_div {
+  background-color: #595959;
+  border-radius: 14px;
+  padding: 4px 14px;
+  margin: 7px;
+}
+
+
+body {
+  background-color: #232323;
+  color: white;
+  padding-top: 0;
+  margin: 0px;
+}
+
+
+header {
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  background-color: #353535;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+#title {
+  margin-left: 30px;
+  margin-right: 400px;
+}
+
+
+main {
+  margin-left: 400px;
+  margin-right: 400px;
+}
+
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+}
+
+
+@media (max-width: 1600px) {
+  #title {
+    margin-right: 200px;
+  }
+
+
+  main {
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+}
+
+
+@media (max-width: 900px) {
+  #title {
+    margin-right: 100px;
+  }
+
+
+  main {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  #title {
+    margin-right: 30px;
+  }
+
+
+  main {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
