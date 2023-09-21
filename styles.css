@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'TitleFont';
+  src: url('fonts/URWGothic-Book.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 a {
   color: #c04bff;
 }
@@ -49,14 +57,20 @@ header {
   overflow: hidden;
   background-color: #353535;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 
 
 #title {
-  margin-left: 30px;
-  margin-right: 400px;
+  font-family: 'TitleFont', sans-serif;
+  font-weight: 500;
+  font-size: 32pt;
+  margin-left: 14px;
+  margin-right: 500px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 
@@ -80,7 +94,7 @@ footer {
 
 @media (max-width: 1600px) {
   #title {
-    margin-right: 200px;
+    margin-right: 450px;
   }
 
 
@@ -91,7 +105,13 @@ footer {
 }
 
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
+  #title {
+    margin-right: 300px;
+  }
+}
+
+@media (max-width: 950px) {
   #title {
     margin-right: 100px;
   }
@@ -107,6 +127,11 @@ footer {
 @media (max-width: 768px) {
   #title {
     margin-right: 30px;
+  }
+
+
+  header {
+    flex-direction: column;
   }
 
 
