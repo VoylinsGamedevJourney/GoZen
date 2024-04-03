@@ -1,0 +1,57 @@
+on: [push, pull_request]
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Setup Python
+        uses: actions/setup-python@v5
+      - name: Setup SCons
+        run: pip install scons
+      - name: Setup Yasm
+        run: sudo apt install -y yasm
+      - name: Build FFmpeg
+        run: pushd ./src/bin/gde_ffmpeg/ && sh ./build-ffmpeg.sh && popd
+      - name: Build GDExtension
+        run: pushd ./src/bin/gde_ffmpeg/ && scons target=template_release platform=linux use_ci=yes && popd
+      - name: Upload GDExtension artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: gdextension-linux
+          path: src/bin/libgozen*
+  windows:
+    runs-on: windows-latest
+    steps:
+      - name: Setup MSYS2
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          update: true
+          location: D:\
+          install: >-
+            curl
+            git
+            mingw-w64-cross-binutils
+            mingw-w64-x86_64-toolchain
+            mingw-w64-x86_64-scons
+            mingw-w64-x86_64-yasm
+            diffutils
+            make
+      - run: echo "D:\msys64\mingw64\bin\" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Build FFmpeg
+        run: pushd ./src/bin/gde_ffmpeg/ && sh ./build-ffmpeg.sh && popd
+      - name: Build GDExtension
+        run: pushd ./src/bin/gde_ffmpeg/ && scons target=template_release platform=linux use_ci=yes && popd
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ffmpeg-windows
+          path: src/bin/libgozen*
